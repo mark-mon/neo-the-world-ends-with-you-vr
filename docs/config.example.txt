@@ -1,0 +1,73 @@
+# NEO: The World Ends with You VR - configuration
+# key = value. Lines starting with # are comments. Restart the game after editing.
+
+# 0 = mod does nothing at all
+enabled = 1
+# 0 error, 1 warn, 2 info, 3 debug, 4 trace
+log_level = 2
+
+# ---- VR output (native OpenXR, SteamVR or any OpenXR runtime)
+vr = 1
+# Per-eye render size: headset recommended size x preset (performance 70%, balanced 85%, native 100%, high 120%,
+# ultra 140%, custom = render_scale), or eye_width/eye_height if both > 0
+render_preset = native
+render_scale = 1.0
+eye_width = 0
+eye_height = 0
+# Head tracking moves the game camera with your head. world_scale = game units per metre of head motion
+head_tracking = 1
+world_scale = 1.0
+# 1 = remove the game camera's downward tilt (keep its heading) so the horizon stays level
+level_camera = 0
+
+# Unity renders into D3D textures upside down; the headset images are flipped back (set 0 if upside down)
+flip_eyes_y = 1
+flip_hud_y = 1
+# Mirror left-right (only if the image looks mirrored)
+flip_eyes_x = 0
+flip_hud_x = 0
+
+# ---- Performance
+# Render at most one game frame per headset frame (stops the game from flooding the GPU)
+frame_pacing = 1
+# 0 = do not also render the 3D world to the monitor (saves a full-resolution render per frame; the monitor then
+#     shows only what the game draws on top)
+desktop_world = 1
+# One performance line per second in neovr.log (perf_log_slow_ms > 0: only seconds with a slower game frame)
+perf_log = 0
+perf_log_slow_ms = 0
+
+# ---- HUD / UI on its own panel
+hud_layer = 1
+hud_tex_width = 1920
+hud_tex_height = 1080
+hud_distance = 1.6
+hud_size = 1.6
+hud_offset_y = -0.05
+hud_follow_head = 0
+# Full-screen menus (no 3D world) are shown on a larger panel
+menu_distance = 2.0
+menu_size = 2.4
+
+# ---- In-headset settings menu: hold L3+R3 (both stick clicks) or press Insert. Changes are saved here on close.
+settings_menu = 1
+settings_menu_distance = 1.0
+settings_menu_size = 0.9
+# 0 = the menu stays fixed in the room where you looked when it opened; 1 = it follows your head
+settings_menu_follow_head = 0
+
+# ---- Cameras (names as logged in neovr.log). The first world camera that renders is used.
+world_cameras = GameCamera,Camera,Main Camera
+hud_cameras = UICamera3D,UICamera2D,UICamera2DDialog,UICamera2DBG
+
+# ---- Keys (virtual-key codes): F9 recenter, F10 HUD on/off, F11 debug dump of the headset images
+key_recenter = 0x78
+key_hud = 0x79
+key_dump = 0x7A
+
+# ---- Diagnostics
+# Logs every camera / canvas on scene changes and on the hotkey (F8) - for adapting the mod
+probe = 0
+probe_hotkey = 0x77
+# Testing: request a headset image dump this many seconds after VR starts (0 = off)
+debug_dump_at_sec = 0
